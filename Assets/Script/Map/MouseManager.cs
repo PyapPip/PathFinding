@@ -1,9 +1,9 @@
-using Unity.VisualScripting;
+ï»¿using Unity.VisualScripting;
 using UnityEngine;
 
 public class MouseManager : MonoBehaviour
 {
-    //¸¶¿ì½º·Î Å¸ÀÏ Å¬¸¯
+    //ë§ˆìš°ìŠ¤ë¡œ íƒ€ì¼ í´ë¦­
 
     void Update()
     {

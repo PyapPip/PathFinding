@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
-    //¸Ê »ı¼º
+    //ë§µ ìƒì„±
 
     public GameObject Tile;
 

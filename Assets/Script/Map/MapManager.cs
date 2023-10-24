@@ -1,10 +1,10 @@
-using JetBrains.Annotations;
+ï»¿using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
-    //±æÃ£±â, ¸Ê °ü¸®
+    //ê¸¸ì°¾ê¸°, ë§µ ê´€ë¦¬
 
     public GameObject Player;
     public int[,] Map = new int[11, 10]
@@ -29,11 +29,11 @@ public class MapManager : MonoBehaviour
 
     private struct Pos
     {
-        public int x, y, z; //ÁÂÇ¥ 
-        public int g;       //ÇöÀç±îÁöÀÇ ÄÚ½ºÆ®
-        public int h;       //¿¹»ó ÄÚ½ºÆ®
-        public int f;       //À­ ÄÚ½ºÆ®µéÀÇ ÃÑÇÕ, °¡ÁßÄ¡
-        public int p;       //Å½»ö °úÁ¤¿¡¼­ ÀÌÀü Å¸ÀÏÀÇ ¹æÇâÀ» ³ªÅ¸³»´Â º¯¼ö. 0Àº ÀÌÀü Å¸ÀÏÀÌ ¾øÀ½, 1Àº y--, 2´Â x--, 3Àº y++, 4´Â y++. zÃà Â÷ÀÌ°¡ ÀÖÀ¸¸é +4
+        public int x, y, z; //ì¢Œí‘œ 
+        public int g;       //í˜„ì¬ê¹Œì§€ì˜ ì½”ìŠ¤íŠ¸
+        public int h;       //ì˜ˆìƒ ì½”ìŠ¤íŠ¸
+        public int f;       //ìœ— ì½”ìŠ¤íŠ¸ë“¤ì˜ ì´í•©, ê°€ì¤‘ì¹˜
+        public int p;       //íƒìƒ‰ ê³¼ì •ì—ì„œ ì´ì „ íƒ€ì¼ì˜ ë°©í–¥ì„ ë‚˜íƒ€ë‚´ëŠ” ë³€ìˆ˜. 0ì€ ì´ì „ íƒ€ì¼ì´ ì—†ìŒ, 1ì€ y--, 2ëŠ” x--, 3ì€ y++, 4ëŠ” y++. zì¶• ì°¨ì´ê°€ ìˆìœ¼ë©´ +4
 
         public static bool operator ==(Pos p1, Pos p2) => p1.x == p2.x && p1.y == p2.y;
         public static bool operator !=(Pos p1, Pos p2) => p1.x != p2.x || p1.y != p2.y;
@@ -119,7 +119,7 @@ public class MapManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾î¿¡°Ô ·çÆ® Àü´Ş
+    /// í”Œë ˆì´ì–´ì—ê²Œ ë£¨íŠ¸ ì „ë‹¬
     /// </summary>
     private void SendRouteToPlayer(int _x, int _y)
     {
@@ -176,7 +176,7 @@ public class MapManager : MonoBehaviour
 
         while (true)
         {
-            //±æÃ£±â ½ÇÆĞ
+            //ê¸¸ì°¾ê¸° ì‹¤íŒ¨
             if (count > 1000)
             {
                 Player.GetComponent<PlayerAnimetion>().NavigationError();
@@ -189,11 +189,11 @@ public class MapManager : MonoBehaviour
             temp.f = 9999999;
             for (int i = 0; i < openList.Count; i++)
             {
-                //µµÂø
+                //ë„ì°©
                 if (openList[i] == goal)
                 {
                     route[openList[i].y, openList[i].x] = openList[i].p;
-                    SendRouteToPlayer(openList[i].x, openList[i].y);   //°úÁ¤À» ¸®½ºÆ®, ¹è¿­¿¡ ÀúÀåÇÏ¿© ÇÃ·¹ÀÌ¾î¿¡°Ô ¿Å°Ü¾ßÇÔ.
+                    SendRouteToPlayer(openList[i].x, openList[i].y);   //ê³¼ì •ì„ ë¦¬ìŠ¤íŠ¸, ë°°ì—´ì— ì €ì¥í•˜ì—¬ í”Œë ˆì´ì–´ì—ê²Œ ì˜®ê²¨ì•¼í•¨.
                     openList.Clear();
                     vist = new bool[Map.GetLength(0), Map.GetLength(1)];
                     return;

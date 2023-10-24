@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //ÇÃ·¹ÀÌ¾î Á¤º¸
+    //í”Œë ˆì´ì–´ ì •ë³´
 
     public int X, Y, Z, Jump;
 

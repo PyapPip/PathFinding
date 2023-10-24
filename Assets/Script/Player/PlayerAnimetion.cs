@@ -1,23 +1,23 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimetion : MonoBehaviour
 {
-    //ÇÃ·¹ÀÌ¾î ¿òÁ÷ÀÓ, ¾Ö´Ï¸ŞÀÌ¼Ç
+    //í”Œë ˆì´ì–´ ì›€ì§ì„, ì• ë‹ˆë©”ì´ì…˜
 
     public float[] JumpPosArr = { 0.1f, 0.3f, 0.65f, 0.9f, 1.0f};
-    public bool isAnimating;       //¾Ö´Ï¸ŞÀÌ¼ÇÀÌ Àç»ıÁßÀÎ°¡?
+    public bool isAnimating;       //ì• ë‹ˆë©”ì´ì…˜ì´ ì¬ìƒì¤‘ì¸ê°€?
 
     private Queue<int> movement_route = new();
     private bool haveRoute;
-    private int inAni;          //¾Ö´Ï¸ŞÀÌ¼Ç ÇöÀç ÇÁ·¹ÀÓ
-    private int rotAni = 3;     //¾Ö´Ï¸ŞÀÌ¼ÇÀÇ ¹æÇâ
-    private Vector3 startPos;   //¾Ö´Ï¸ŞÀÌ¼Ç ½ÃÀÛ ÁöÁ¡
-    private Vector3 endPos;     //¾Ö´Ï¸ŞÀÌ¼Ç ³¡ ÁöÁ¡
+    private int inAni;          //ì• ë‹ˆë©”ì´ì…˜ í˜„ì¬ í”„ë ˆì„
+    private int rotAni = 3;     //ì• ë‹ˆë©”ì´ì…˜ì˜ ë°©í–¥
+    private Vector3 startPos;   //ì• ë‹ˆë©”ì´ì…˜ ì‹œì‘ ì§€ì 
+    private Vector3 endPos;     //ì• ë‹ˆë©”ì´ì…˜ ë ì§€ì 
 
     /// <summary>
-    /// °æ·Î¸¦ ¹Ş¾Æ¿À±âÀ§ÇÑ ÇÔ¼ö
+    /// ê²½ë¡œë¥¼ ë°›ì•„ì˜¤ê¸°ìœ„í•œ í•¨ìˆ˜
     /// </summary>
     public void FollowRoute(List<int> _List)
     {
@@ -52,7 +52,7 @@ public class PlayerAnimetion : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı
+    /// ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ
     /// </summary>
     IEnumerator PlayAni()
     {
@@ -74,7 +74,7 @@ public class PlayerAnimetion : MonoBehaviour
 
             rotAni = movement_route.Dequeue();
 
-            //½ÃÀÛÁÂÇ¥, ³¡ ÁÂÇ¥ ÀúÀå
+            //ì‹œì‘ì¢Œí‘œ, ë ì¢Œí‘œ ì €ì¥
             startPos = this.transform.position;
 
             if (rotAni == 1)
@@ -101,7 +101,7 @@ public class PlayerAnimetion : MonoBehaviour
 
 
 
-            //¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı
+            //ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ
 
             if (movement_route.Peek() == 0)
             {
@@ -131,13 +131,13 @@ public class PlayerAnimetion : MonoBehaviour
     }
 
     /// <summary>
-    /// °È±â
+    /// ê±·ê¸°
     /// </summary>
     IEnumerator Wark()
     {
         while (true)
         {
-            //16ÇÁ·¹ÀÓ¸¶´Ù ÇÑ Å¸ÀÏ ¿òÁ÷ÀÓ ±¸Çö
+            //16í”„ë ˆì„ë§ˆë‹¤ í•œ íƒ€ì¼ ì›€ì§ì„ êµ¬í˜„
             transform.position = Vector3.Lerp(startPos, endPos, (inAni % 16) * (1.0f / 16.0f));
 
             inAni++;
@@ -161,7 +161,7 @@ public class PlayerAnimetion : MonoBehaviour
 
             if(c >= 20 && c <= 29)
             {
-                //Á¡ÇÁ
+                //ì í”„
                 if(c < 26)
                 {
                     transform.position = Vector3.Lerp(startPos, new Vector3(this.transform.position.x, startPos.y + 0.1f, this.transform.position.z), JumpPosArr[c-20]);
@@ -169,7 +169,7 @@ public class PlayerAnimetion : MonoBehaviour
 
                 startPos = new Vector3(startPos.x, this.transform.position.y, startPos.z);
 
-                //ÂøÁö
+                //ì°©ì§€
                 if(c >= 26)
                 {
                     transform.position = Vector3.Lerp(startPos, new Vector3(this.transform.position.x, endPos.y, this.transform.position.z), JumpPosArr[c-20]);
@@ -190,7 +190,7 @@ public class PlayerAnimetion : MonoBehaviour
     }
 
     /// <summary>
-    /// ´ë±â»óÅÂ
+    /// ëŒ€ê¸°ìƒíƒœ
     /// </summary>
     IEnumerator Waiting()
     {
@@ -213,7 +213,7 @@ public class PlayerAnimetion : MonoBehaviour
     }
 
     /// <summary>
-    /// ±æÃ£±â ½ÇÆĞ, °¥ ¼ö ¾ø´Â ¶¥À» Å¬¸¯ÇßÀ»¶§.
+    /// ê¸¸ì°¾ê¸° ì‹¤íŒ¨, ê°ˆ ìˆ˜ ì—†ëŠ” ë•…ì„ í´ë¦­í–ˆì„ë•Œ.
     /// </summary>
     IEnumerator Fail()
     {
