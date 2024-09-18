@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
@@ -159,7 +158,7 @@ public class MapManager : MonoBehaviour
             }
         }
         Debug.Log(list.Count);
-        Player.GetComponent<PlayerAnimetion>().FollowRoute(list);
+        Player.GetComponent<PlayerAnimation>().FollowRoute(list);
         list.Clear();
     }
 
@@ -179,7 +178,7 @@ public class MapManager : MonoBehaviour
             //길찾기 실패
             if (count > 1000)
             {
-                Player.GetComponent<PlayerAnimetion>().NavigationError();
+                Player.GetComponent<PlayerAnimation>().NavigationError();
                 Debug.Log("Loop");
                 count = 0;
                 return;

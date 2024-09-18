@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MouseManager : MonoBehaviour
 {
@@ -7,7 +6,7 @@ public class MouseManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && !this.GetComponent<MapManager>().Player.GetComponent<PlayerAnimetion>().isAnimating)
+        if(Input.GetMouseButtonDown(0) && !this.GetComponent<MapManager>().Player.GetComponent<PlayerAnimation>().isAnimating)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

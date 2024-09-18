@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimetion : MonoBehaviour
+public class PlayerAnimation : MonoBehaviour
 {
     //플레이어 움직임, 애니메이션
 
@@ -234,15 +234,6 @@ public class PlayerAnimetion : MonoBehaviour
             {
                 yield return new WaitForEndOfFrame();
             }
-        }
-    }
-
-    IEnumerator FPS()
-    {
-        while (true)
-        {
-            Debug.Log(Time.frameCount);
-            yield return new WaitForSeconds(1);
         }
     }
 }
